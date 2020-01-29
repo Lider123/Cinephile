@@ -8,7 +8,7 @@ class Application extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Cinephile',
-      home: HomePage(title: 'Home'),
+      home: HomePage(),
       theme: appTheme,
     );
   }
