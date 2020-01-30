@@ -1,3 +1,7 @@
+import 'package:sprintf/sprintf.dart';
+
+import '../constants.dart';
+
 class Movie {
   final double popularity;
   final int voteCount;
@@ -34,4 +38,35 @@ class Movie {
         voteAverage = json["vote_average"],
         overview = json["overview"],
         releaseDate = json["release_date"];
+}
+
+class Video {
+  final String id;
+  final String key;
+  final String name;
+  final String site;
+  final int size;
+  final String type;
+  final String srcUrl;
+
+  Video({this.id, this.key, this.name, this.site, this.size, this.type, this.srcUrl});
+
+  factory Video.fromJson(Map json) {
+    String _srcUrl;
+    String _site = json["site"];
+    String _key = json["key"];
+    switch (_site) {
+      case "YouTube": _srcUrl = sprintf(Site.YOUTUBE, [_key]); break;
+      default: _srcUrl = "https://google.com";
+    }
+    return new Video(
+        id: json["id"],
+        key: _key,
+        name: json["name"],
+        site: _site,
+        size: json["size"],
+        type: json["type"],
+        srcUrl: _srcUrl
+    );
+  }
 }
