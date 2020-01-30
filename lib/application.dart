@@ -1,5 +1,5 @@
 import 'package:cinephile/config/themes.dart';
-import 'package:cinephile/pages/home_page.dart';
+import 'package:cinephile/pages/home.dart';
 import 'package:flutter/material.dart';
 
 class Application extends StatelessWidget {

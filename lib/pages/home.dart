@@ -2,11 +2,10 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:cinephile/config/colors.dart';
-import 'package:cinephile/models/movie.dart';
-import 'package:cinephile/secrets.dart';
+import 'package:cinephile/data/models.dart';
 import 'package:flutter/material.dart';
 
-import '../api.dart';
+import '../data/api.dart';
 
 class HomePage extends StatefulWidget {
 
