@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:cinephile/config/colors.dart';
 import 'package:cinephile/data/models.dart';
+import 'package:cinephile/pages/details.dart';
 import 'package:flutter/material.dart';
 
 import '../data/api.dart';
@@ -91,25 +92,35 @@ class _HomePageState extends State<HomePage> {
   Card buildMovieCard(Movie movie) {
     return Card(
       color: colorSurface,
-      child: Column(
-        children: <Widget>[
-          Expanded(
-            flex: 1,
-            child: Image.network(IMAGE_URL + movie.posterPath,
-              fit: BoxFit.cover,
+      child: GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => DetailsPage(movie)
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(8),
-            child: Text(movie.title,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                fontSize: 14,
-                color: colorOnSurface,
+          );
+        },
+        child: Column(
+          children: <Widget>[
+            Expanded(
+              flex: 1,
+              child: Image.network(IMAGE_URL + movie.posterPath,
+                fit: BoxFit.cover,
               ),
             ),
-          ),
-        ],
+            Padding(
+              padding: EdgeInsets.all(8),
+              child: Text(movie.title,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  fontSize: 14,
+                  color: colorOnSurface,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

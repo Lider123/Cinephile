@@ -10,4 +10,9 @@ class Api {
     final secret = await SecretLoader(secretPath: "secrets.json").load();
     return http.get(BASE_URL + "/movie/popular?api_key=${secret.apiKey}");
   }
+
+  static Future fetchVideos(int movieId) async {
+    final secret = await SecretLoader(secretPath: "secrets.json").load();
+    return http.get(BASE_URL + "/movie/$movieId/videos?api_key=${secret.apiKey}");
+  }
 }
